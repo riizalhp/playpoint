@@ -9,25 +9,31 @@ class Product extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'game_id',
         'name',
         'slug',
         'short_specs',
         'price',
+        'original_price',
         'thumbnail_url',
+        'gallery',
         'description',
         'is_available',
     ];
     
+    protected $casts = [
+        'gallery' => 'array',
+    ];
+
     /**
-     * Mendefinisikan relasi bahwa satu Produk milik satu Game.
+     * Menggunakan 'slug' sebagai kunci rute, bukan 'id'.
      */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function game()
     {
         return $this->belongsTo(Game::class);

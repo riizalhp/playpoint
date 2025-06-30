@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('slug')->unique(); // Untuk URL yang bersih
             $table->text('short_specs'); // Spesifikasi singkat, e.g., "Mythic, 350 Skin, 115 Hero"
             $table->unsignedBigInteger('price'); // Harga dalam bentuk angka (integer)
+            $table->unsignedBigInteger('original_price')->nullable();
             $table->string('thumbnail_url'); // URL gambar utama produk
             $table->text('description'); // Deskripsi lengkap produk
             $table->boolean('is_available')->default(true); // Status ketersediaan (true/false)

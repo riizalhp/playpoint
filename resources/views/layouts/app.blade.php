@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- Mengubah teks title default --}}
     <title>@yield('title', 'PlayPoint - Jual Beli Akun Game Online')</title>
     
-    {{-- Menambahkan favicon --}}
     <link rel="icon" type="image/png" href="{{ asset('images/play-point-logo.png') }}">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,17 +24,16 @@
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
     </style>
 
-    <!-- Tailwind CSS dengan Konfigurasi (FIX) -->
+    <!-- Tailwind CSS dengan Konfigurasi -->
     <script>
         tailwind.config = {
-            darkMode: 'class', // Memberitahu Tailwind untuk menggunakan mode gelap berbasis class
+            darkMode: 'class', 
         }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Script Logika Dark Mode (Ditempatkan di akhir <head>) -->
+    <!-- Script Logika Dark Mode -->
     <script>
-        // Fungsi untuk memperbarui ikon berdasarkan tema
         function updateThemeIcons() {
              const html = document.documentElement;
              const sunIcon = document.getElementById('sun-icon');
@@ -50,7 +49,6 @@
              }
         }
 
-        // Fungsi untuk mengganti tema
         function toggleTheme() {
             const html = document.documentElement;
             html.classList.toggle('dark');
@@ -58,21 +56,19 @@
             updateThemeIcons();
         }
 
-        // Terapkan tema awal saat halaman pertama kali dimuat (mencegah kedipan)
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
         
-        // Pastikan ikon diperbarui setelah semua elemen halaman siap
         document.addEventListener('DOMContentLoaded', updateThemeIcons);
     </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased">
 
     <!-- Header / Navigation Bar -->
-    <header class="bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-700/50 sticky top-0 z-50">
+    <header class="bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-700/50 sticky top-0 z-40">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
@@ -86,7 +82,15 @@
                         <i id="sun-icon" class="fas fa-sun text-xl hidden"></i>
                         <i id="moon-icon" class="fas fa-moon text-xl hidden"></i>
                     </button>
-                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"><i class="fas fa-shopping-cart text-xl"></i></a>
+                    {{-- PERUBAHAN: Tambahkan ID pada badge keranjang dan bungkus dalam div --}}
+                    <a href="{{ route('cart.index') }}" class="relative text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white" id="cart-icon-container">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                         @if(session('cart') && count(session('cart')) > 0)
+                            <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">{{ count(session('cart')) }}</span>
+                        @else
+                            <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                        @endif
+                    </a>
                     <a href="#" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
                 </div>
             </div>
@@ -104,6 +108,9 @@
         </div>
     </footer>
     
+    {{-- Tambahkan jQuery untuk kemudahan AJAX --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- Swiper's JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     

@@ -18,6 +18,7 @@ class Game extends Model
 
     /**
      * Mendefinisikan relasi bahwa satu Game memiliki banyak Product.
+     * * <-- TAMBAHKAN FUNGSI INI
      */
     public function products()
     {
