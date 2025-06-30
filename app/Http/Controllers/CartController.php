@@ -159,7 +159,8 @@ class CartController extends Controller
      */
     public function verifyVoucher(Request $request)
     {
-        $voucherCode = strtoupper($request->input('voucher_code'));
+        // Perubahan: Menghapus strtoupper() agar menjadi case-sensitive
+        $voucherCode = $request->input('voucher_code'); 
         $cartItems = session()->get('cart', []);
         $products = Product::whereIn('id', array_keys($cartItems))->get();
         
@@ -174,7 +175,7 @@ class CartController extends Controller
         $message = '';
         $success = false;
 
-        // Logika verifikasi voucher
+        // Logika verifikasi voucher (sekarang case-sensitive)
         if ($voucherCode === 'DISKON10') {
             $discount = $finalTotal * 0.10; // Diskon 10%
             $message = 'Voucher DISKON10 berhasil diterapkan! Anda mendapatkan diskon 10%.';
