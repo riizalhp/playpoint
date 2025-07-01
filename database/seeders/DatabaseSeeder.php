@@ -12,18 +12,21 @@ class DatabaseSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        // Hapus data lama dari tabel products dan games
+        // Hapus data lama dari tabel
         DB::table('products')->delete();
         DB::table('games')->delete();
+        DB::table('users')->delete(); // TAMBAHKAN: Hapus data users lama
 
         // Atur ulang auto-increment ID
         DB::statement('ALTER TABLE games AUTO_INCREMENT = 1');
         DB::statement('ALTER TABLE products AUTO_INCREMENT = 1');
+        DB::statement('ALTER TABLE users AUTO_INCREMENT = 1'); // TAMBAHKAN: Reset auto-increment users
 
         // Panggil seeder
         $this->call([
             GameSeeder::class,
-            ProductSeeder::class, // Pastikan ini dipanggil
+            ProductSeeder::class,
+            UserSeeder::class, // TAMBAHKAN: Panggil UserSeeder
         ]);
 
         Schema::enableForeignKeyConstraints();
