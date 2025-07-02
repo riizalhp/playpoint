@@ -24,7 +24,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
         <div class="lg:col-span-3">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="bg-[#1E293B] rounded-xl shadow-md shadow-indigo-500/50 overflow-hidden">
                 <div class="bg-black">
                     <img id="main-product-image" src="{{ $product->gallery[0] ?? $product->thumbnail_url }}" alt="[Gambar Utama {{ $product->name }}]" class="w-full h-auto object-contain mx-auto">
                 </div>
@@ -32,8 +32,9 @@
                 @if(is_array($product->gallery) && count($product->gallery) > 1)
                     <div class="grid grid-cols-4 sm:grid-cols-5 gap-2 p-2">
                         @foreach($product->gallery as $image)
-                        <div>
-                            <img src="{{ $image }}" alt="[Pratinjau Gambar {{ $product->name }}]" class="thumbnail-image w-full h-24 object-cover rounded-md cursor-pointer border-2 border-transparent hover:border-blue-500 transition">
+                        <div class="bg-[#1E293B] text-[#F1F5F9] rounded-md">
+                            <div class="bg-[#1E293B] text-[#F1F5F9] rounded-md">
+                            <img src="{{ $image }}" alt="[Pratinjau Gambar {{ $product->name }}]" class="thumbnail-image w-full h-24 object-cover rounded-md cursor-pointer border-2 border-transparent hover:bg-[#334155] hover:border-[1px] hover:border-[#3b82f6] transition">
                         </div>
                         @endforeach
                     </div>
@@ -42,7 +43,7 @@
         </div>
 
         <div class="lg:col-span-2">
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md sticky top-24">
+            <div class="bg-[#1E293B] p-6 rounded-xl shadow-[0_0_10px_#3b82f6] sticky top-24">
                 
                 <div class="mb-3">
                     @if($product->is_available)
@@ -56,14 +57,14 @@
                     @endif
                 </div>
 
-                <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">{{ $product->name }}</h1>
+                <h1 class="text-2xl lg:text-3xl font-bold text-[#F1F5F9] mb-4">{{ $product->name }}</h1>
                 <div class="mb-6">
                     @if(isset($product->original_price) && $product->original_price > 0)
                     <p class="text-lg text-gray-400 dark:text-gray-500 line-through">
                         Rp {{ number_format($product->original_price, 0, ',', '.') }}
                     </p>
                     @endif
-                    <p class="text-4xl font-extrabold text-blue-600 dark:text-blue-400">
+                    <p class="text-4xl font-extrabold text-yellow-300">
                         Rp {{ number_format($product->price, 0, ',', '.') }}
                     </p>
                 </div>
@@ -71,7 +72,7 @@
                 <div class="flex flex-col gap-3">
                     <form action="{{ route('cart.buyNow', $product) }}" method="POST">
                         @csrf
-                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center disabled:bg-gray-400 disabled:cursor-not-allowed" {{ !$product->is_available ? 'disabled' : '' }}>
+                        <button type="submit" class="w-full bg-[var(--color-accent)] text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-colors flex items-center justify-center disabled:bg-gray-400 disabled:cursor-not-allowed" {{ !$product->is_available ? 'disabled' : '' }}>
                             <i class="fas fa-bolt mr-2"></i> Beli Langsung
                         </button>
                     </form>
@@ -95,7 +96,7 @@
         </div>
     </div>
 
-    <div class="mt-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <div class="mt-10 bg-[#1E293B] p-6 rounded-xl shadow-md shadow-indigo-500/50">
         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Detail Produk</h2>
         <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
             <p><strong>Spesifikasi Singkat:</strong><br>{{ $product->short_specs }}</p>
@@ -107,24 +108,24 @@
     @if($relatedProducts->count() > 0)
     <div class="mt-10">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Produk Lainnya</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
             @foreach($relatedProducts as $relatedProduct)
-                <a href="{{ route('products.show', ['game' => $game, 'product' => $relatedProduct]) }}" class="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden">
-                    <div class="relative">
-                        <img src="{{ $relatedProduct->thumbnail_url }}" alt="Gambar Akun {{ $relatedProduct->name }}" class="w-full h-56 object-cover">
+                <a href="{{ route('products.show', ['game' => $game, 'product' => $relatedProduct]) }}" class="block bg-[#1E3A8A] rounded-xl shadow-md shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500 transition-shadow duration-300 ease-in-out overflow-hidden max-w-[250px]">
+                    <div class="relative aspect-[4/5]">
+                        <img src="{{ $relatedProduct->thumbnail_url }}" alt="Gambar Akun {{ $relatedProduct->name }}" class="w-full object-cover">
                         @if($relatedProduct->original_price > $relatedProduct->price)
                             <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</span>
                         @endif
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 dark:text-white text-md truncate" title="{{ $relatedProduct->name }}">{{ $relatedProduct->name }}</h3>
+                    <div class="p-2">
+                        <h3 class="font-semibold text-gray-800 dark:text-white text-[15px] truncate" title="{{ $relatedProduct->name }}">{{ $relatedProduct->name }}</h3>
                         
                         @if($relatedProduct->original_price > $relatedProduct->price)
                         <p class="text-sm text-gray-400 dark:text-gray-500 line-through">
                             Rp {{ number_format($relatedProduct->original_price, 0, ',', '.') }}
                         </p>
                         @endif
-                        <p class="text-blue-600 dark:text-blue-400 font-bold text-lg mt-1">
+                        <p class="text-yellow-300 font-bold text-lg mt-1">
                             Rp {{ number_format($relatedProduct->price, 0, ',', '.') }}
                         </p>
                     </div>
@@ -145,17 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
     thumbnails.forEach(thumbnail => {
         // Highlight thumbnail jika cocok dengan gambar utama
         if (mainImage.src === thumbnail.src) {
-            thumbnail.classList.add('border-blue-500');
+            thumbnail.classList.add('bg-[#3b82f6]', 'border-[2px]', 'border-[#3b82f6]');
             thumbnail.classList.remove('border-transparent');
         }
 
         thumbnail.addEventListener('click', function() {
             mainImage.src = this.src;
             thumbnails.forEach(t => {
-                t.classList.remove('border-blue-500');
+                t.classList.remove('bg-[#3b82f6]', 'border-[2px]', 'border-[#3b82f6]');
                 t.classList.add('border-transparent');
             });
-            this.classList.add('border-blue-500');
+            this.classList.add('bg-[#3b82f6]', 'border-[2px]', 'border-[#3b82f6]');
             this.classList.remove('border-transparent');
         });
     });

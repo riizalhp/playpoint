@@ -23,17 +23,17 @@
     </div>
 
     <!-- Grid Produk -->
-    <div id="product-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+    <div id="product-list" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-6">
         @forelse ($products as $product)
-            <a href="{{ route('products.show', ['game' => $game, 'product' => $product]) }}" class="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-hidden">
-                <div class="relative">
-                    <img src="{{ $product->thumbnail_url }}" alt="Gambar Akun {{ $product->name }}" class="w-full h-56 object-cover">
+            <a href="{{ route('products.show', ['game' => $game, 'product' => $product]) }}" class="block bg-[#1E3A8A] rounded-xl shadow-md shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500 transition-shadow duration-300 ease-in-out overflow-hidden max-w-[250px]">
+                <div class="relative aspect-[4/5]">
+                    <img src="{{ $product->thumbnail_url }}" alt="Gambar Akun {{ $product->name }}" class="w-full object-cover">
                     @if($product->original_price > $product->price)
                         <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</span>
                     @endif
                 </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-gray-800 dark:text-white text-md truncate" title="{{ $product->name }}">{{ $product->name }}</h3>
+                <div class="p-2">
+                    <h3 class="font-semibold text-gray-800 dark:text-white text-[15px] truncate" title="{{ $product->name }}">{{ $product->name }}</h3>
                     
                     {{-- PERBAIKAN: Harga coret di atas harga diskon --}}
                     @if($product->original_price > $product->price)
@@ -42,7 +42,7 @@
                     </p>
                     @endif
 
-                    <p class="text-blue-600 dark:text-blue-400 font-bold text-lg mt-1">
+                    <p class="text-yellow-300 font-bold text-lg mt-1">
                         Rp {{ number_format($product->price, 0, ',', '.') }}
                     </p>
                 </div>

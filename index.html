@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore Keren - Jual Beli Akun Game Terpercaya</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- [ PENGATURAN DASAR & WARNA ] --- */
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #2c3e50;
+            --text-primary: #e0f2f1;
+            --text-secondary: #b0bec5;
+            --accent-primary: #00c2ff;
+            --accent-secondary: #e94560;
+            --font-heading: 'Russo One', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--accent-primary);
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        /* --- [ HEADER & NAVIGASI ] --- */
+        header {
+            background-color: rgba(22, 33, 62, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+        
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* --- [ HERO SECTION ] --- */
+        #hero {
+            background-image: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 1)), url('https://placehold.co/1920x1080/1a1a2e/e0f2f1?text=Gambar\\nGame+Keren');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            text-shadow: 0 0 20px var(--accent-primary);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            font-family: var(--font-heading);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-primary);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent-primary);
+        }
+
+        /* --- [ SEMUA BAGIAN KONTEN ] --- */
+        section {
+            padding: 80px 0;
+        }
+        
+        #produk {
+            background-color: var(--bg-secondary);
+        }
+
+        /* --- [ KARTU PRODUK ] --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 194, 255, 0.2);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-game-tag {
+            background-color: var(--accent-secondary);
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .product-specs {
+            list-style: none;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .product-specs li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-specs li i {
+            color: var(--accent-primary);
+            margin-right: 10px;
+            width: 15px;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .product-price {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .buy-button {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #00a0d1;
+        }
+        
+        .game-category {
+            margin-bottom: 60px;
+        }
+
+        .game-category-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-secondary);
+            padding-left: 15px;
+        }
+
+        /* --- [ CARA TRANSAKSI ] --- */
+        .how-to-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .how-to-step {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid var(--bg-card);
+        }
+
+        .how-to-step i {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+        }
+
+        .how-to-step h3 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        /* --- [ TESTIMONI ] --- */
+        #testimoni {
+             background-color: var(--bg-secondary);
+        }
+        .testimonial-grid {
+             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-primary);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* --- [ FOOTER ] --- */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 2px solid var(--accent-primary);
+        }
+
+        .footer-socials a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-primary);
+        }
+
+        .footer-copyright {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* --- [ RESPONSIVE DESIGN ] --- */
+        @media (max-width: 768px) {
+            .logo { font-size: 1.5rem; }
+            nav { display: none; }
+            #hero { height: 70vh; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+        }
+
+        /*
+        =================================
+        --- [ CSS UNTUK POPUP IKLAN ] ---
+        =================================
+        */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.3s, opacity 0.3s;
+        }
+
+        .popup-overlay.show {
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0s 0s, opacity 0.3s;
+        }
+
+        .popup-content {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        
+        .popup-overlay.show .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2.5rem;
+            line-height: 1;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .popup-close:hover {
+            color: var(--text-primary);
+        }
+
+        .popup-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--accent-primary);
+        }
+
+        .popup-content p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .popup-content .cta-button {
+             font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Game<span>Store</span></a>
+            <nav>
+                <a href="#produk">Produk</a>
+                <a href="#cara-transaksi">Cara Beli</a>
+                <a href="#testimoni">Testimoni</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Pusat Akun Game Sultan</h1>
+                    <p>Temukan akun game impianmu dengan spek dewa, skin lengkap, dan harga terbaik. Transaksi dijamin aman, cepat, dan terpercaya 100%.</p>
+                    <a href="#produk" class="cta-button">Lihat Semua Akun</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="produk">
+            <div class="container">
+                <h2 class="section-title">KOLEKSI AKUN</h2>
+                <div class="game-category">
+                    <h3 class="game-category-title">Mobile Legends</h3>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <div class="product-image"><img src="https://placehold.co/600x400/2c3e50/00c2ff?text=Akun+ML+Sultan" alt="Akun Mobile Legends 1"></div>
+                            <div class="product-content">
+                                <span class="product-game-tag">Mobile Legends</span>
+                                <h3>Mythical Glory Full Skin Collector</h3>
+                                <ul class="product-specs">
+                                    <li><i class="fa-solid fa-star"></i> Rank: Mythical Glory 800+</li>
+                                    <li><i class="fa-solid fa-user-shield"></i> Hero: 120+ (Max)</li>
+                                    <li><i class="fa-solid fa-shirt"></i> Skin: 500+ (Collector, Legend)</li>
+                                    <li><i class="fa-solid fa-check"></i> Login Moonton (All Unbind)</li>
+                                </ul>
+                                <div class="product-footer">
+                                    <span class="product-price">Rp 2.500.000</span>
+                                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20akun%20ML%20Mythical%20Glory%20Full%20Skin" target="_blank" class="buy-button">Beli via WA</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cara-transaksi">
+             <div class="container">
+                <h2 class="section-title">CARA TRANSAKSI</h2>
+                <div class="how-to-grid">
+                    <div class="how-to-step"><i class="fa-solid fa-magnifying-glass"></i><h3>1. Pilih Akun</h3><p>Pilih akun yang Anda inginkan dari daftar produk kami.</p></div>
+                    <div class="how-to-step"><i class="fa-brands fa-whatsapp"></i><h3>2. Hubungi Admin</h3><p>Klik tombol "Beli via WA" untuk chat langsung dengan kami.</p></div>
+                    <div class="how-to-step"><i class="fa-solid fa-money-bill-transfer"></i><h3>3. Lakukan Pembayaran</h3><p>Lakukan pembayaran ke rekening yang diberikan oleh admin.</p></div>
+                    <div class="how-to-step"><i class="fa-solid fa-circle-check"></i><h3>4. Akun Diproses</h3><p>Admin akan menyerahkan data akun dan membantu proses pengamanan.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimoni">
+             <div class="container">
+                <h2 class="section-title">KATA MEREKA</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card"><p>"Gila sih, prosesnya cepet banget! Adminnya ramah dan sabar bantu sampe akunnya bener-bener aman di tangan gue. Recommended seller!"</p><span class="testimonial-author">- Budi, Jakarta</span></div>
+                    <div class="testimonial-card"><p>"Awalnya ragu, tapi liat testimoninya jadi yakin. Ternyata beneran amanah. Akunnya sesuai deskripsi, speknya gak ada yg kurang. Mantap!"</p><span class="testimonial-author">- Siska, Surabaya</span></div>
+                    <div class="testimonial-card"><p>"Akhirnya dapet akun idaman setelah nabung lama. Harganya paling oke dibanding toko lain. Makasih banyak GameStore!"</p><span class="testimonial-author">- Eko, Bandung</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="kontak">
+        <div class="container">
+            <h2>GameStore Keren</h2>
+            <p style="margin: 15px 0; color: var(--text-secondary);">Platform Jual Beli Akun Game Paling Aman dan Terpercaya</p>
+            <div class="footer-socials">
+                <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/akunanda" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com/akunanda" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 GameStore Keren. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <h2>PROMO SPESIAL JUNI!</h2>
+            <p>Dapatkan diskon 15% untuk semua akun Valorant dan Mobile Legends hanya di akhir pekan ini. Jangan sampai kehabisan!</p>
+            <a href="#produk" class="cta-button popup-cta">Lihat Akun Promo</a>
+            </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pilih elemen-elemen popup
+            const popupOverlay = document.querySelector('.popup-overlay');
+            const closeButton = document.querySelector('.popup-close');
+            const popupCtaButton = document.querySelector('.popup-cta');
+
+            // Fungsi untuk menampilkan popup
+            const showPopup = () => {
+                popupOverlay.classList.add('show');
+            };
+
+            // Fungsi untuk menyembunyikan popup
+            const hidePopup = () => {
+                popupOverlay.classList.remove('show');
+            };
+
+            // Tampilkan popup setelah beberapa detik
+            // Angka 3000 berarti 3 detik (dalam milidetik)
+            setTimeout(showPopup, 3000);
+
+            // Sembunyikan popup saat tombol close diklik
+            closeButton.addEventListener('click', hidePopup);
+            
+            // Sembunyikan popup saat tombol di dalam popup diklik
+            popupCtaButton.addEventListener('click', hidePopup);
+
+            // Sembunyikan popup saat area luar diklik
+            popupOverlay.addEventListener('click', (event) => {
+                // Hanya tutup jika yang diklik adalah area overlay, bukan konten popupnya
+                if (event.target === popupOverlay) {
+                    hidePopup();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

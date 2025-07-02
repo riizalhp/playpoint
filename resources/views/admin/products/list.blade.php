@@ -6,7 +6,7 @@
 <div class="flex justify-between items-center mb-6">
     <div>
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Produk: {{ $game->name }}</h1>
-        <a href="{{ route('admin.products.index') }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">&larr; Kembali ke Pilih Game</a>
+        <a href="{{ route('admin.products.index') }}" class="text-sm text-[var(--color-accent)] dark:text-[var(--color-accent)] hover:underline">&larr; Kembali ke Pilih Game</a>
     </div>
     <a href="{{ route('admin.products.create', $game) }}" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
         <i class="fas fa-plus mr-2"></i>Tambah Produk

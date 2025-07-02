@@ -6,12 +6,12 @@
 <div class="container mx-auto p-4 sm:p-6 lg:p-8">
     <div class="max-w-2xl mx-auto">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Formulir Titip Jual</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400">Untuk Game: <span class="font-semibold">{{ $game->name }}</span></p>
-            <a href="{{ route('consignment.create') }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">&larr; Ganti Game</a>
+            <h1 class="text-3xl font-bold" style="color: var(--color-primary)">Formulir Titip Jual</h1>
+            <p class="text-lg text-gray-600">Untuk Game: <span class="font-semibold">{{ $game->name }}</span></p>
+            <a href="{{ route('consignment.create') }}" class="text-sm hover:underline" style="color: var(--color-accent)">&larr; Ganti Game</a>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+        <div style="background-color: var(--color-base)" class="p-8 rounded-lg shadow-md">
             @if(session('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
                     <p class="font-bold">Berhasil!</p>
@@ -25,26 +25,26 @@
                     {{-- Data Diri --}}
                     <div class="md:col-span-2"><h3 class="text-lg font-semibold border-b pb-2 mb-4">Informasi Penjual</h3></div>
                     <div>
-                        <label for="seller_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama Lengkap</label>
+                        <label for="seller_name" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Nama Lengkap</label>
                         <input type="text" name="seller_name" id="seller_name" value="{{ old('seller_name') }}" required class="block w-full input-style">
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                        <label for="email" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Email</label>
                         <input type="email" name="email" id="email" value="{{ old('email') }}" required class="block w-full input-style">
                     </div>
                     <div>
-                        <label for="contact_whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nomor WA</label>
+                        <label for="contact_whatsapp" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Nomor WA</label>
                         <input type="text" name="contact_whatsapp" id="contact_whatsapp" value="{{ old('contact_whatsapp') }}" required class="block w-full input-style">
                     </div>
                     <div>
-                        <label for="contact_whatsapp_optional" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nomor WA Opsional</label>
+                        <label for="contact_whatsapp_optional" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Nomor WA Opsional</label>
                         <input type="text" name="contact_whatsapp_optional" id="contact_whatsapp_optional" value="{{ old('contact_whatsapp_optional') }}" class="block w-full input-style">
                     </div>
 
                     {{-- Alamat --}}
                     <div class="md:col-span-2"><h3 class="text-lg font-semibold border-b pb-2 mb-4 mt-4">Alamat</h3></div>
                     <div>
-                        <label for="province" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Provinsi</label>
+                        <label for="province" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Provinsi</label>
                         <select name="province" id="province" required class="block w-full input-style">
                             <option value="">Pilih Provinsi</option>
                             @foreach($provinces as $province)
@@ -53,35 +53,35 @@
                         </select>
                     </div>
                      <div>
-                        <label for="city" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kota/Kabupaten</label>
+                        <label for="city" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Kota/Kabupaten</label>
                         <select name="city" id="city" required class="block w-full input-style" disabled>
                             <option value="">Pilih Provinsi Dulu</option>
                         </select>
                     </div>
                     <div class="md:col-span-2">
-                        <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Alamat Lengkap</label>
+                        <label for="address" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Alamat Lengkap</label>
                         <textarea name="address" id="address" rows="3" required class="block w-full input-style">{{ old('address') }}</textarea>
                     </div>
                      <div>
-                        <label for="postal_code" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kode Pos</label>
+                        <label for="postal_code" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Kode Pos</label>
                         <input type="text" name="postal_code" id="postal_code" value="{{ old('postal_code') }}" required class="block w-full input-style">
                     </div>
 
                     {{-- Detail Akun --}}
                     <div class="md:col-span-2"><h3 class="text-lg font-semibold border-b pb-2 mb-4 mt-4">Informasi Akun</h3></div>
                     <div class="md:col-span-2">
-                        <label for="account_details" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Detail Akun</label>
+                        <label for="account_details" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Detail Akun</label>
                         <textarea name="account_details" id="account_details" rows="5" required class="block w-full input-style">{{ old('account_details') }}</textarea>
                     </div>
                     <div class="md:col-span-2">
-                        <label for="account_images" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Gambar Akun (Maks. 5 Gambar)</label>
-                        <input type="file" name="account_images[]" id="account_images" multiple accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <label for="account_images" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Gambar Akun (Maks. 5 Gambar)</label>
+                        <input type="file" name="account_images[]" id="account_images" multiple accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:text-white hover:file:bg-opacity-90" style="background-color: var(--color-accent)">
                         <div id="image-preview-container" class="mt-4 grid grid-cols-3 sm:grid-cols-5 gap-4"></div>
                     </div>
                     
                     {{-- Input Harga --}}
                     <div>
-                        <label for="price_low_display" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Harga Terendah</label>
+                        <label for="price_low_display" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Harga Terendah</label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">Rp</span>
                             <input type="text" id="price_low_display" placeholder="0" class="block w-full pl-9 input-style">
@@ -90,7 +90,7 @@
                         <p id="price-error" class="text-red-500 text-xs mt-1 hidden">Harga terendah harus lebih kecil dari Harga tertinggi.</p>
                     </div>
                     <div>
-                        <label for="price_high_display" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Harga Tertinggi</label>
+                        <label for="price_high_display" class="block text-sm font-medium mb-1" style="color: var(--color-primary)">Harga Tertinggi</label>
                         <div class="relative">
                             <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">Rp</span>
                             <input type="text" id="price_high_display" placeholder="0" class="block w-full pl-9 input-style">
@@ -103,11 +103,11 @@
                 <div class="mt-6">
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="terms" name="terms" type="checkbox" required class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                            <input id="terms" name="terms" type="checkbox" required class="focus:ring-accent h-4 w-4 text-accent border-gray-300 rounded">
                         </div>
                         <div class="ml-3 text-sm">
-                            <label for="terms" class="font-medium text-gray-700 dark:text-gray-300">Saya menyetujui</label>
-                            <button type="button" id="open-terms-modal" class="text-blue-600 hover:underline">Syarat & Ketentuan</button>
+                            <label for="terms" class="font-medium" style="color: var(--color-primary)">Saya menyetujui</label>
+                            <button type="button" id="open-terms-modal" class="hover:underline" style="color: var(--color-accent)">Syarat & Ketentuan</button>
                             <p class="text-gray-500">yang berlaku.</p>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="mt-8">
-                    <button type="submit" id="submit-button" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400" disabled>
+                    <button type="submit" id="submit-button" class="w-full text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition-colors disabled:bg-gray-400" style="background-color: var(--color-accent)" disabled>
                         Kirim Permintaan
                     </button>
                 </div>
@@ -129,15 +129,15 @@
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Syarat & Ketentuan Titip Jual</h3>
-                <div id="terms-content" class="mt-4 max-h-64 overflow-y-scroll pr-4 text-sm text-gray-600 dark:text-gray-400 space-y-2">
+        <div class="inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" style="background-color: var(--color-base)">
+            <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4" style="background-color: var(--color-base)">
+                <h3 class="text-lg leading-6 font-medium" id="modal-title" style="color: var(--color-primary)">Syarat & Ketentuan Titip Jual</h3>
+                <div id="terms-content" class="mt-4 max-h-64 overflow-y-scroll pr-4 text-sm text-gray-600 space-y-2">
                     <p><strong>1. Keaslian Akun:</strong> ...</p>
                 </div>
             </div>
-            <div class="bg-gray-50 dark:bg-gray-700 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" id="close-terms-modal" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="close-terms-modal" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:bg-opacity-90 sm:ml-3 sm:w-auto sm:text-sm" style="background-color: var(--color-accent)">
                     Saya Mengerti
                 </button>
             </div>
@@ -156,8 +156,8 @@
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .input-style:focus {
-    border-color: #3B82F6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(77, 188, 190, 0.3);
     outline: none;
 }
 .dark .input-style {

@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         
-                        <button type="submit" class="w-full mt-6 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        <button type="submit" class="w-full mt-6 bg-[var(--color-accent)] text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition-colors">
                             Lanjut ke Pembayaran
                         </button>
                     </form>
@@ -118,7 +118,7 @@
             <i class="fas fa-shopping-cart text-5xl text-gray-400 dark:text-gray-500 mb-4"></i>
             <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Keranjang Anda Masih Kosong</h3>
             <p class="text-gray-500 dark:text-gray-400 mt-2">Ayo cari akun game impianmu sekarang!</p>
-            <a href="{{ route('home') }}" class="mt-6 inline-block bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+            <a href="{{ route('home') }}" class="mt-6 inline-block bg-[var(--color-accent)] text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-colors">
                 Mulai Belanja
             </a>
         </div>
